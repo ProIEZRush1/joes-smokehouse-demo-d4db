@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Joe's Smoke House · Smoke &amp; Grill kosher</title>
+<meta name="description" content="Restaurante kosher KMD: cholent para Shabat, parrilladas y catering. Pide tu cholent por WhatsApp.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --carbon:#120c08; --cafe:#1d140e; --cafe-2:#2a1d14; --cafe-3:#36261a; --oro:#d4a64a; --oro-h:#b98a32; --oro-c:#f3e3bf; --fuego:#c4361f;
+    --fondo:#f6f0e6; --blanco:#fff; --tinta:#1b130d; --tinta-2:#6a5b4d; --linea:#e6dccb; --wa:#1fa855; --wa-h:#178a45;
+    --sombra:0 1px 2px rgba(0,0,0,.05),0 14px 34px -16px rgba(40,20,5,.4);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--fondo);color:var(--tinta);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+  a{color:inherit}
+  h1,h2,h3,.logo,.num{font-family:Bitter,Georgia,serif;letter-spacing:-.01em}
+  section{scroll-margin-top:66px;padding:78px 0}
+  .cont{max-width:1160px;margin:0 auto;padding:0 20px}
+  svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+  .aviso-demo{background:#000;color:#bfb2a0;font-size:13px;text-align:center;padding:8px 16px;border-bottom:1px solid #2a1d14}
+  .aviso-demo a{color:var(--oro);font-weight:600;text-decoration:none}
+  header{position:sticky;top:0;z-index:20;background:rgba(18,12,8,.95);backdrop-filter:blur(10px);color:#fff;border-bottom:1px solid #2a1d14}
+  .barra{display:flex;align-items:center;gap:24px;height:70px}
+  .logo{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:22px;font-weight:900;line-height:1}
+  .logo img{width:44px;height:44px;border-radius:50%}
+  .logo small{display:block;font:600 10.5px/1.2 Inter,sans-serif;letter-spacing:.16em;color:var(--oro);margin-top:4px}
+  nav.menu{display:flex;gap:26px;margin-left:auto;font-size:15px;font-weight:500}
+  nav.menu a{text-decoration:none;color:#d9cdb9} nav.menu a:hover{color:var(--oro)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;cursor:pointer;font:600 15px/1 Inter,sans-serif;text-decoration:none;border-radius:12px;padding:14px 22px;transition:.15s}
+  .btn-wa{background:var(--wa);color:#fff} .btn-wa:hover{background:var(--wa-h)}
+  .btn-oro{background:var(--oro);color:var(--carbon)} .btn-oro:hover{background:var(--oro-h)}
+  .btn-linea{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+  .barra .btn{padding:11px 16px;font-size:14px}
+  .hero{position:relative;color:#fff;overflow:hidden;background:var(--carbon)}
+  .hero .foto{position:absolute;inset:0;background:url("hero.jpg") center 70%/cover no-repeat}
+  .hero .foto:after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,12,8,.96) 0,rgba(18,12,8,.82) 45%,rgba(18,12,8,.35) 100%),linear-gradient(0deg,rgba(18,12,8,.9) 0,transparent 40%)}
+  .h-grid{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center;padding-top:76px;padding-bottom:84px}
+  .chip{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,166,74,.6);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--oro);letter-spacing:.04em;background:rgba(18,12,8,.5)}
+  .hero h1{font-size:clamp(46px,7vw,88px);line-height:.98;font-weight:900;margin:20px 0 12px}
+  .hero h1 em{font-style:normal;color:var(--oro)}
+  .giros{font-size:15px;letter-spacing:.12em;color:#bfb2a0;margin-bottom:16px}
+  .hero p.sub{font-size:17px;color:#e0d5c4;max-width:540px}
+  .hero p.sub b{color:var(--oro);font-weight:600}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .sello{justify-self:center;width:min(300px,70vw);aspect-ratio:1;border-radius:50%;padding:8px;background:conic-gradient(from 0deg,#d4a64a,#6b4a1e,#f0d390,#6b4a1e,#d4a64a);box-shadow:0 30px 80px -20px rgba(196,54,31,.5)}
+  .sello img{width:100%;height:100%;border-radius:50%;display:block;background:#000}
+  .kosher{display:inline-flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;color:#e0d5c4}
+  .kosher b{display:inline-grid;place-items:center;height:30px;padding:0 10px;border:1.5px solid var(--oro);border-radius:999px;color:var(--oro);font:800 13px Bitter,serif;letter-spacing:.08em}
+  .eti{font-size:13px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--oro-h)}
+  .titulo{max-width:680px;margin-bottom:34px}
+  .titulo h2{font-size:clamp(30px,3.8vw,44px);line-height:1.08;margin:10px 0 12px;font-weight:800;color:var(--carbon)}
+  .titulo p{color:var(--tinta-2);font-size:17px}
+  .platos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .p{background:var(--blanco);border:1px solid var(--linea);border-radius:20px;overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column}
+  .p .img{aspect-ratio:16/10;background:#2a1d14 center/cover no-repeat}
+  .p .txt{padding:20px 22px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .p h3{font-size:23px;font-weight:800;color:var(--carbon);line-height:1.15}
+  .p p{color:var(--tinta-2);font-size:15px}
+  .p .pie-p{margin-top:auto;padding-top:10px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px dashed var(--linea)}
+  .precio{font-size:14px;color:var(--tinta-2)} .precio b{color:var(--carbon)}
+  .p a{font-weight:700;color:var(--fuego);text-decoration:none;display:inline-flex;gap:6px;align-items:center;font-size:14px}
+  .shabat{background:var(--carbon);color:#fff}
+  .shabat .titulo h2{color:#fff} .shabat .titulo .eti{color:var(--oro)} .shabat .titulo p{color:#d9cdb9}
+  .s-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:48px;align-items:start}
+  .corte{background:linear-gradient(135deg,#3a1a10,#1d140e);border:1px solid #5a2a18;border-radius:18px;padding:20px 22px;margin-bottom:26px}
+  .corte .lb{font-size:12px;font-weight:700;letter-spacing:.2em;color:#f2a58f;text-transform:uppercase}
+  .corte b{display:block;font:800 22px/1.25 Bitter,serif;margin:6px 0 4px}
+  .corte span{color:#d9cdb9;font-size:15px}
+  .lista-a{list-style:none;display:grid;gap:16px}
+  .lista-a li{display:flex;gap:14px}
+  .lista-a .n{width:36px;height:36px;flex:none;border-radius:50%;background:var(--oro);color:var(--carbon);display:grid;place-items:center;font:800 15px Bitter,serif}
+  .lista-a b{display:block;font-size:16px} .lista-a span{color:#bfb2a0;font-size:15px}
+  .form{background:var(--fondo);color:var(--tinta);border-radius:22px;padding:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+  .form h3{font-size:25px;font-weight:800;line-height:1.1;color:var(--carbon)}
+  .nota2{font-size:13px;color:var(--tinta-2);margin:4px 0 16px}
+  .sub-l{font-size:13px;font-weight:700;color:var(--tinta);margin-bottom:7px}
+  .opc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+  .opc.dos{grid-template-columns:1fr 1fr}
+  .opc button{all:unset;cursor:pointer;background:#fff;border:1.5px solid var(--linea);border-radius:11px;padding:9px 8px;font-size:14px;font-weight:700;text-align:center;color:var(--tinta);line-height:1.2}
+  .opc button small{display:block;font-size:11px;font-weight:500;color:var(--tinta-2);margin-top:2px}
+  .opc button[aria-pressed="true"]{border-color:var(--carbon);background:var(--carbon);color:#fff}
+  .opc button[aria-pressed="true"] small{color:var(--oro)}
+  .litros{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .litros button{all:unset;cursor:pointer;width:46px;height:46px;border-radius:12px;background:#fff;border:1.5px solid var(--linea);display:grid;place-items:center;font:800 22px Bitter,serif;color:var(--carbon)}
+  .litros button:disabled{opacity:.35;cursor:default}
+  .litros output{min-width:110px;text-align:center;font:800 24px Bitter,serif;color:var(--carbon)}
+  .litros small{color:var(--tinta-2);font-size:13px}
+  .campos{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px}
+  .campos label{font-size:13px;font-weight:700;color:var(--tinta);display:grid;gap:6px}
+  input{font:15px Inter,sans-serif;padding:11px 12px;border-radius:11px;border:1.5px solid var(--linea);background:#fff;color:var(--tinta);width:100%;min-width:0}
+  input::placeholder{color:#a3968a}
+  input:focus{outline:0;border-color:var(--oro-h)}
+  .resumen{background:#fff;border:1px solid var(--linea);color:var(--tinta-2);border-radius:12px;padding:10px 14px;margin-bottom:12px;font-size:14px}
+  .resumen b{color:var(--fuego)}
+  .form .btn{width:100%} .form .btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
+  .aclara{font-size:12.5px;color:var(--tinta-2);margin-top:8px;text-align:center}
+  .catering{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:24px;overflow:hidden;background:var(--cafe);color:#fff;box-shadow:var(--sombra)}
+  .catering .img{min-height:320px;background:url("catering.jpg") center/cover no-repeat}
+  .catering .txt{padding:44px 40px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+  .catering h2{font-size:clamp(30px,3.6vw,42px);line-height:1.08;font-weight:800}
+  .catering p{color:#d9cdb9}
+  .catering .btn{align-self:flex-start}
+  .ubi{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
+  .datos{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:26px;box-shadow:var(--sombra);display:grid;gap:18px;align-content:start}
+  .datos h3{font-size:22px;font-weight:800;color:var(--carbon);display:flex;gap:10px;align-items:center}
+  .datos h3 svg{color:var(--fuego)}
+  .datos p{color:var(--tinta-2)}
+  .horario{list-style:none;display:grid;gap:6px;font-size:15px}
+  .horario li{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--linea);padding-bottom:6px}
+  .horario li b{color:var(--carbon)}
+  .mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);min-height:320px;background:#e9e1d3}
+  .mapa iframe{width:100%;height:100%;min-height:320px;border:0;display:block}
+  .cta{background:radial-gradient(120% 120% at 90% 0,#3a2416 0,var(--carbon) 60%);color:#fff;border-radius:24px;padding:54px 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+  .cta h2{font-size:clamp(38px,5vw,62px);line-height:1;font-weight:900}
+  .cta p{color:var(--oro);font-size:18px;margin-top:10px}
+  .contacto{border-left:1px solid #3a2a1e;padding-left:30px;display:grid;gap:12px}
+  .contacto b{font:800 24px Bitter,serif}
+  .contacto a,.contacto span{display:inline-flex;gap:10px;align-items:center;text-decoration:none;color:#e8dccb;font-size:16px}
+  .contacto svg{color:var(--oro)}
+  footer{padding:40px 0 110px;color:var(--tinta-2);font-size:14px}
+  .pie{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;border-top:1px solid var(--linea);padding-top:26px}
+  .pie .logo{font-size:19px;color:var(--carbon)} .pie .logo img{width:34px;height:34px}
+  .pie a{text-decoration:none;font-weight:600;color:var(--carbon)}
+  .flota{position:fixed;right:20px;bottom:20px;z-index:30;border-radius:999px;box-shadow:0 10px 26px -8px rgba(31,168,85,.6)}
+  @media (max-width:920px){
+    nav.menu{display:none} .barra .btn{margin-left:auto}
+    .h-grid,.s-grid,.cta,.catering,.ubi{grid-template-columns:1fr} .platos{grid-template-columns:1fr 1fr}
+    .sello{width:220px}
+    .contacto{border-left:0;padding-left:0;border-top:1px solid #3a2a1e;padding-top:22px}
+  }
+  @media (max-width:620px){
+    .cont{padding:0 16px} .barra{height:62px;gap:12px} .logo{font-size:18px} .logo img{width:38px;height:38px} .logo small{display:none}
+    .barra .btn span{display:none}
+    .h-grid{padding-top:40px;padding-bottom:54px} .hero p.sub{font-size:16px} .acciones .btn{flex:1 1 100%}
+    .hero .foto:after{background:linear-gradient(0deg,rgba(18,12,8,.97) 0,rgba(18,12,8,.82) 55%,rgba(18,12,8,.55) 100%)}
+    .sello{width:150px;order:-1;justify-self:start}
+    section{padding:56px 0} .platos{grid-template-columns:1fr}
+    .catering .img{min-height:220px} .catering .txt{padding:30px 22px}
+    .cta{padding:40px 22px} .flota span{display:none} .flota{padding:15px}
+    .form{padding:18px}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2Zm5.8 14.08c-.24.68-1.42 1.31-1.95 1.36-.5.05-.97.24-3.26-.68-2.76-1.09-4.5-3.92-4.64-4.1-.13-.18-1.11-1.48-1.11-2.82s.7-2 .95-2.27c.25-.27.54-.34.72-.34h.52c.17 0 .39-.06.61.47.23.54.77 1.88.84 2.02.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.16.27.7 1.15 1.5 1.86 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.23.61-.14.25.09 1.59.75 1.86.88.27.14.45.2.52.32.07.11.07.66-.17 1.33Z"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-fuego" viewBox="0 0 24 24"><path d="M12 22c4 0 7-2.8 7-6.8 0-3.4-2.3-5.6-3.8-7.6-.4 1.8-1.3 2.9-2.4 3.4.2-3.4-1.3-6.6-4.3-9 .3 3.6-1.6 5.6-3 7.6C4.4 11.2 5 13 5 15.2 5 19.2 8 22 12 22Z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.6"/></symbol>
+  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-vela" viewBox="0 0 24 24"><path d="M8 22V11h3v11M13 22V11h3v11M6 22h12"/><path d="M9.5 8.5c-1-1-.6-2.6.6-4 .3 1.2 1.4 1.6 1.4 2.8 0 .8-.7 1.5-1.4 1.5M14.5 8.5c-1-1-.6-2.6.6-4 .3 1.2 1.4 1.6 1.4 2.8 0 .8-.7 1.5-1.4 1.5"/></symbol>
+</svg>
+
+<div class="aviso-demo">Demostración preparada para Joe's Smoke House por <a href="https://overcloud.us" target="_blank" rel="noopener">Overcloud</a>. Textos de sus anuncios; fotos ilustrativas.</div>
+
+<header>
+  <div class="cont barra">
+    <a class="logo" href="#inicio" aria-label="Joe's Smoke House, inicio"><img src="logo.png" alt=""><span>Joe's Smoke House<small>SMOKE &amp; GRILL · KOSHER</small></span></a>
+    <nav class="menu" aria-label="Secciones">
+      <a href="#menu">Menú</a>
+      <a href="#shabat">Cholent para Shabat</a>
+      <a href="#catering">Catering</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/525637007010?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero">
+    <div class="foto" role="img" aria-label="Carnes a la parrilla con humo"></div>
+    <div class="cont h-grid">
+      <div>
+        <span class="chip"><svg class="i" style="width:16px;height:16px"><use href="#i-fuego"/></svg> Smoke &amp; Grill · Desde 2016</span>
+        <h1>Anticipa tu pedido de <em>cholent</em></h1>
+        <div class="giros">CHOLENT · PARRILLADAS · CATERING</div>
+        <p class="sub">El cholent de cada Shabat, parrilladas y catering kosher. <b>Envíos a partir de un litro.</b></p>
+        <div class="acciones">
+          <a class="btn btn-oro" href="#shabat">Pedir cholent para Shabat <svg class="i"><use href="#i-flecha"/></svg></a>
+          <a class="btn btn-linea" href="#menu">Ver menú</a>
+        </div>
+        <div class="kosher"><b>KMD</b> Kosher KMD México</div>
+      </div>
+      <div class="sello"><img src="logo.png" alt="Joe's Smoke House, Smoke &amp; Grill, est. 2016"></div>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="cont">
+      <div class="titulo"><div class="eti">Menú</div><h2>Lo que sale de nuestra cocina</h2><p>Precios y disponibilidad de la semana por WhatsApp.</p></div>
+      <div class="platos">
+        <article class="p"><div class="img" style="background-image:url('cholent.jpg')" role="img" aria-label="Cholent"></div><div class="txt"><h3>Cholent para Shabat</h3><p>El cholent de cada semana, por litro. Envíos a partir de un litro.</p><div class="pie-p"><span class="precio">Precio: <b>consultar</b></span><a href="#shabat">Pedir <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></a></div></div></article>
+        <article class="p"><div class="img" style="background-image:url('parrillada.jpg')" role="img" aria-label="Parrillada"></div><div class="txt"><h3>Parrilladas</h3><p>Cortes a la parrilla y ahumados, para tu mesa o tu reunión.</p><div class="pie-p"><span class="precio">Precio: <b>consultar</b></span><a href="https://wa.me/525637007010?text=Hola%2C%20quiero%20pedir%20una%20parrillada" target="_blank" rel="noopener">Pedir <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></a></div></div></article>
+        <article class="p"><div class="img" style="background-image:url('catering.jpg')" role="img" aria-label="Catering"></div><div class="txt"><h3>Catering</h3><p>Comida kosher para eventos, reuniones y simjás.</p><div class="pie-p"><span class="precio">Precio: <b>cotizar</b></span><a href="#catering">Cotizar <svg class="i" style="width:16px;height:16px"><use href="#i-flecha"/></svg></a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="shabat" class="shabat">
+    <div class="cont s-grid">
+      <div>
+        <div class="titulo"><div class="eti">Cholent para Shabat</div><h2>Pide tu cholent antes del corte</h2><p>Elige el Shabat, los litros y a dónde va. El pedido nos llega a WhatsApp ya escrito.</p></div>
+        <div class="corte" id="corte"><div class="lb">Corte de pedidos</div><b id="corte-t">Viernes, 10:30 a. m.</b><span id="corte-f">Los viernes se aceptan pedidos hasta las 10:30 a. m.</span></div>
+        <ul class="lista-a">
+          <li><div class="n">1</div><div><b>Elige el Shabat</b><span>Este o los siguientes.</span></div></li>
+          <li><div class="n">2</div><div><b>Cuántos litros</b><span>Envíos a partir de un litro.</span></div></li>
+          <li><div class="n">3</div><div><b>Envío o recoger</b><span>Te confirmamos el total por WhatsApp.</span></div></li>
+        </ul>
+      </div>
+      <form class="form" id="pedido" onsubmit="return false">
+        <h3>Pedido de cholent</h3>
+        <p class="nota2">No se cobra nada en la página.</p>
+        <div class="sub-l">Shabat</div>
+        <div class="opc" id="sabado"></div>
+        <div class="sub-l">Litros</div>
+        <div class="litros"><button type="button" id="menos" aria-label="Un litro menos">−</button><output id="lts">1 litro</output><button type="button" id="mas" aria-label="Un litro más">+</button></div>
+        <div class="sub-l">Entrega</div>
+        <div class="opc dos" id="entrega">
+          <button type="button" data-v="Envío a domicilio">Envío a domicilio</button>
+          <button type="button" data-v="Paso a recoger">Paso a recoger</button>
+        </div>
+        <div class="campos">
+          <label>Nombre<input id="nombre" placeholder="Tu nombre" autocomplete="name"></label>
+          <label id="l-dir">Dirección<input id="dir" placeholder="Calle, número y colonia" autocomplete="street-address"></label>
+        </div>
+        <div class="resumen" id="resumen"></div>
+        <a class="btn btn-wa" id="enviar" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="i"><use href="#i-wa"/></svg> Pedir por WhatsApp</a>
+        <p class="aclara" id="aclara">Escribe tu nombre y dirección para activar el botón.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="catering">
+    <div class="cont">
+      <div class="catering">
+        <div class="img" role="img" aria-label="Mesa de catering"></div>
+        <div class="txt">
+          <div class="eti" style="color:var(--oro)">Catering</div>
+          <h2>Tu evento con sabor a Joe's</h2>
+          <p>Parrilladas, ahumados y guarniciones para reuniones, simjás y eventos de empresa. Cuéntanos fecha e invitados y te mandamos propuesta.</p>
+          <a class="btn btn-oro" href="https://wa.me/525637007010?text=Hola%2C%20quiero%20cotizar%20catering%20para%20un%20evento" target="_blank" rel="noopener">Cotizar catering <svg class="i"><use href="#i-flecha"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ubicacion" style="padding-top:20px">
+    <div class="cont">
+      <div class="titulo"><div class="eti">Ubicación</div><h2>Visítanos en Av. de las Fuentes 35</h2></div>
+      <div class="ubi">
+        <div class="datos">
+          <div><h3><svg class="i"><use href="#i-pin"/></svg> Dirección</h3><p>Av. de las Fuentes 35</p></div>
+          <div><h3><svg class="i"><use href="#i-reloj"/></svg> Horario</h3>
+            <ul class="horario">
+              <li><span>Domingo</span><b>11:00 a 17:00</b></li>
+              <li><span>Lunes a miércoles</span><b>9:00 a 17:00</b></li>
+              <li><span>Jueves</span><b>9:00 a 20:00</b></li>
+              <li><span>Viernes</span><b>9:00 a 15:00</b></li>
+              <li><span>Shabat</span><b>Cerrado</b></li>
+            </ul>
+          </div>
+          <a class="btn btn-wa" href="https://wa.me/525637007010?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg> 56 3700 7010</a>
+        </div>
+        <div class="mapa"><iframe title="Mapa de Joe's Smoke House" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Av.+de+las+Fuentes+35,+Lomas+de+Tecamachalco,+Naucalpan&output=embed"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="cont">
+      <div class="cta">
+        <div><h2>No te quedes sin tu cholent.</h2><p>Pídelo para este Shabat por WhatsApp.</p></div>
+        <div class="contacto">
+          <b>Joe's Smoke House</b>
+          <a href="https://wa.me/525637007010?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg> 56 3700 7010</a>
+          <span><svg class="i"><use href="#i-pin"/></svg> Av. de las Fuentes 35</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="cont pie">
+    <span class="logo"><img src="logo.png" alt=""><span>Joe's Smoke House</span></span>
+    <span>Smoke &amp; Grill · Kosher KMD · Est. 2016</span>
+    <span>Demo por <a href="https://overcloud.us" target="_blank" rel="noopener">Overcloud</a></span>
+  </div>
+</footer>
+
+<a class="btn btn-wa flota" href="https://wa.me/525637007010?text=Hola%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Escribir a Joe's Smoke House por WhatsApp"><svg class="i"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+
+<script>
+  const WA = '525637007010';
+  const $ = (id) => document.getElementById(id);
+  const MESES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const MES3 = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  // Hora de la Ciudad de México, sin depender de la zona del navegador.
+  function ahoraCDMX() {
+    const p = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Mexico_City', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false }).formatToParts(new Date());
+    const g = (t) => +p.find((x) => x.type === t).value;
+    return new Date(Date.UTC(g('year'), g('month') - 1, g('day'), g('hour') % 24, g('minute')));
+  }
+  // Próximos 3 Shabatot cuyo corte (viernes 10:30) no ha pasado.
+  function sabados() {
+    const now = ahoraCDMX();
+    const d = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()));
+    d.setUTCDate(d.getUTCDate() + ((6 - d.getUTCDay() + 7) % 7));
+    const out = [];
+    while (out.length < 3) {
+      const corte = new Date(d); corte.setUTCDate(corte.getUTCDate() - 1); corte.setUTCHours(10, 30);
+      if (corte > now) out.push({ sab: new Date(d), corte });
+      d.setUTCDate(d.getUTCDate() + 7);
+    }
+    return { now, out };
+  }
+  const { now, out: SAB } = sabados();
+  let iSab = 0, litros = 1, entrega = 'Envío a domicilio';
+  $('sabado').innerHTML = SAB.map((s, i) => `<button type="button" data-i="${i}">${i === 0 ? 'Este' : 'Sáb'} ${s.sab.getUTCDate()} ${MES3[s.sab.getUTCMonth()]}<small>pide antes del vie ${s.corte.getUTCDate()}</small></button>`).join('');
+  const largo = (d) => `sábado ${d.getUTCDate()} de ${MESES[d.getUTCMonth()]}`;
+  function pintarCorte() {
+    const s = SAB[iSab], ms = s.corte - now;
+    const dias = Math.floor(ms / 864e5), horas = Math.floor((ms % 864e5) / 36e5);
+    $('corte-t').textContent = `Viernes ${s.corte.getUTCDate()} de ${MESES[s.corte.getUTCMonth()]}, 10:30 a. m.`;
+    $('corte-f').textContent = `Para el Shabat del ${s.sab.getUTCDate()} de ${MESES[s.sab.getUTCMonth()]}. Faltan ${dias ? dias + (dias === 1 ? ' día y ' : ' días y ') : ''}${horas} ${horas === 1 ? 'hora' : 'horas'}.`;
+  }
+  function pintar() {
+    document.querySelectorAll('#sabado button').forEach((b) => b.setAttribute('aria-pressed', +b.dataset.i === iSab));
+    document.querySelectorAll('#entrega button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.v === entrega));
+    $('lts').textContent = litros === 1 ? '1 litro' : `${litros} litros`;
+    $('menos').disabled = litros <= 1; $('mas').disabled = litros >= 30;
+    const envio = entrega === 'Envío a domicilio';
+    $('l-dir').style.display = envio ? '' : 'none';
+    const nom = $('nombre').value.trim(), dir = $('dir').value.trim();
+    const s = SAB[iSab];
+    $('resumen').innerHTML = `<b>${$('lts').textContent} de cholent</b> · ${largo(s.sab)} · ${envio ? 'envío' : 'recoger'}`;
+    const lineas = [
+      'Hola, quiero pedir cholent para Shabat:',
+      `• Shabat: ${largo(s.sab)}`,
+      `• Cantidad: ${$('lts').textContent}`,
+      `• Entrega: ${entrega}`,
+      ...(envio ? [`• Dirección: ${dir || '-'}`] : []),
+      `• Nombre: ${nom || '-'}`,
+      '¿Me confirman el total?',
+    ];
+    $('enviar').href = `https://wa.me/${WA}?text=${encodeURIComponent(lineas.join('\n'))}`;
+    const listo = nom && (!envio || dir);
+    $('enviar').setAttribute('aria-disabled', listo ? 'false' : 'true');
+    $('aclara').textContent = listo ? 'Te confirmamos el total por WhatsApp.' : (envio ? 'Escribe tu nombre y dirección para activar el botón.' : 'Escribe tu nombre para activar el botón.');
+    pintarCorte();
+  }
+  $('sabado').addEventListener('click', (ev) => { const b = ev.target.closest('button'); if (b) { iSab = +b.dataset.i; pintar(); } });
+  $('entrega').addEventListener('click', (ev) => { const b = ev.target.closest('button'); if (b) { entrega = b.dataset.v; pintar(); } });
+  $('menos').addEventListener('click', () => { if (litros > 1) { litros--; pintar(); } });
+  $('mas').addEventListener('click', () => { if (litros < 30) { litros++; pintar(); } });
+  ['nombre','dir'].forEach((id) => $(id).addEventListener('input', pintar));
+  pintar();
+</script>
+</body>
+</html>
