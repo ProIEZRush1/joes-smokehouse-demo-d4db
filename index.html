@@ -101,6 +101,15 @@
   .resumen b{color:var(--fuego)}
   .form .btn{width:100%} .form .btn[aria-disabled="true"]{opacity:.4;pointer-events:none}
   .aclara{font-size:12.5px;color:var(--tinta-2);margin-top:8px;text-align:center}
+  .parr{background:var(--carbon);color:#fff}
+  .parr .titulo h2{color:#fff} .parr .titulo .eti{color:var(--oro)} .parr .titulo p{color:#d9cdb9}
+  .kilos{display:grid;gap:8px;margin-top:8px}
+  .kg{display:flex;justify-content:space-between;align-items:baseline;background:var(--cafe-2);border:1px solid var(--cafe-3);border-radius:12px;padding:12px 16px}
+  .kg span{color:#d9cdb9;font-size:15px} .kg b{font:800 22px Bitter,serif;color:var(--oro)}
+  .kg.total{background:linear-gradient(135deg,#3a1a10,#1d140e);border-color:#5a2a18} .kg.total span{color:#fff;font-weight:700}
+  .nota-kg{font-size:13px;color:#a8998a;margin-top:10px}
+  .nuevo{display:inline-block;background:var(--fuego);color:#fff;font:800 11px Inter,sans-serif;letter-spacing:.12em;border-radius:6px;padding:3px 7px;margin-left:8px;vertical-align:middle}
+  .opc.multi button[aria-pressed="true"]{background:var(--fuego);border-color:var(--fuego)}
   .catering{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:24px;overflow:hidden;background:var(--cafe);color:#fff;box-shadow:var(--sombra)}
   .catering .img{min-height:320px;background:url("catering.jpg") center/cover no-repeat}
   .catering .txt{padding:44px 40px;display:flex;flex-direction:column;gap:14px;justify-content:center}
@@ -166,6 +175,7 @@
     <nav class="menu" aria-label="Secciones">
       <a href="#menu">Menú</a>
       <a href="#shabat">Cholent para Shabat</a>
+      <a href="#parrillada">Calcula tu parrillada</a>
       <a href="#catering">Catering</a>
       <a href="#ubicacion">Ubicación</a>
     </nav>
@@ -233,6 +243,49 @@
         <div class="resumen" id="resumen"></div>
         <a class="btn btn-wa" id="enviar" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="i"><use href="#i-wa"/></svg> Pedir por WhatsApp</a>
         <p class="aclara" id="aclara">Escribe tu nombre y dirección para activar el botón.</p>
+      </form>
+    </div>
+  </section>
+
+  <section id="parrillada" class="parr">
+    <div class="cont s-grid">
+      <div>
+        <div class="titulo"><div class="eti">Calcula tu parrillada <span class="nuevo">NUEVO</span></div><h2>¿Cuánta carne necesitas para tu reunión?</h2><p>Di cuántos son, qué cortes quieren y qué tan buenos para comer. La página calcula los kilos y nos manda el pedido a WhatsApp.</p></div>
+        <div class="kilos" id="kilos"></div>
+        <p class="nota-kg">Cálculo de referencia. Te confirmamos cantidades y total por WhatsApp.</p>
+      </div>
+      <form class="form" id="f-parr" onsubmit="return false">
+        <h3>Tu parrillada</h3>
+        <p class="nota2">No se cobra nada en la página.</p>
+        <div class="sub-l">Personas</div>
+        <div class="litros"><button type="button" id="p-menos" aria-label="Menos personas">−</button><output id="p-n">10 personas</output><button type="button" id="p-mas" aria-label="Más personas">+</button></div>
+        <div class="sub-l">Qué tan buenos para comer</div>
+        <div class="opc" id="apetito">
+          <button type="button" data-v="300">Ligero<small>300 g c/u</small></button>
+          <button type="button" data-v="400">Normal<small>400 g c/u</small></button>
+          <button type="button" data-v="500">Muy buenos<small>500 g c/u</small></button>
+        </div>
+        <div class="sub-l">Cortes (elige uno o varios)</div>
+        <div class="opc multi" id="cortes">
+          <button type="button" data-v="Brisket ahumado">Brisket</button>
+          <button type="button" data-v="Costillas">Costillas</button>
+          <button type="button" data-v="Asado de tira">Asado de tira</button>
+          <button type="button" data-v="Pollo ahumado">Pollo</button>
+          <button type="button" data-v="Salchichas">Salchichas</button>
+          <button type="button" data-v="Arrachera">Arrachera</button>
+        </div>
+        <div class="sub-l">Guarniciones</div>
+        <div class="opc multi" id="guarn">
+          <button type="button" data-v="Papas">Papas</button>
+          <button type="button" data-v="Ensalada">Ensalada</button>
+          <button type="button" data-v="Arroz">Arroz</button>
+        </div>
+        <div class="campos">
+          <label>Fecha de la reunión<input id="p-fecha" type="date"></label>
+        </div>
+        <div class="resumen" id="p-resumen"></div>
+        <a class="btn btn-wa" id="p-enviar" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg class="i"><use href="#i-wa"/></svg> Pedir mi parrillada por WhatsApp</a>
+        <p class="aclara" id="p-aclara">Elige la fecha para activar el botón.</p>
       </form>
     </div>
   </section>
@@ -362,6 +415,35 @@
   $('mas').addEventListener('click', () => { if (litros < 30) { litros++; pintar(); } });
   ['nombre','dir'].forEach((id) => $(id).addEventListener('input', pintar));
   pintar();
+  let personas = 10, gramos = 400;
+  const cortes = new Set(['Brisket ahumado', 'Costillas']), guarn = new Set(['Papas']);
+  const kgTxt = (k) => `${k.toLocaleString('es-MX', { maximumFractionDigits: 1 })} kg`;
+  const fechaLarga = (v) => { if (!v) return ''; const [a, m, d] = v.split('-'); return `${+d} de ${MESES[+m - 1]}`; };
+  function pintarParr() {
+    document.querySelectorAll('#apetito button').forEach((b) => b.setAttribute('aria-pressed', +b.dataset.v === gramos));
+    document.querySelectorAll('#cortes button').forEach((b) => b.setAttribute('aria-pressed', cortes.has(b.dataset.v)));
+    document.querySelectorAll('#guarn button').forEach((b) => b.setAttribute('aria-pressed', guarn.has(b.dataset.v)));
+    $('p-n').textContent = `${personas} personas`;
+    $('p-menos').disabled = personas <= 5; $('p-mas').disabled = personas >= 200;
+    const total = personas * gramos / 1000, lista = [...cortes];
+    const por = lista.length ? Math.max(0.5, Math.round((total / lista.length) * 2) / 2) : 0;
+    $('kilos').innerHTML = lista.map((c) => `<div class="kg"><span>${c}</span><b>${kgTxt(por)}</b></div>`).join('') + `<div class="kg total"><span>Total para ${personas} personas</span><b>${kgTxt(por * lista.length)}</b></div>`;
+    const f = fechaLarga($('p-fecha').value);
+    $('p-resumen').innerHTML = `<b>${kgTxt(por * lista.length)} de carne</b> · ${personas} personas${f ? ` · ${f}` : ''}`;
+    const lineas = ['Hola, quiero pedir una parrillada:', `• Personas: ${personas}`, ...lista.map((c) => `• ${c}: ${kgTxt(por)}`), `• Guarniciones: ${[...guarn].join(', ') || 'ninguna'}`, `• Fecha: ${f || '-'}`, '¿Me confirman cantidades y total?'];
+    $('p-enviar').href = `https://wa.me/${WA}?text=${encodeURIComponent(lineas.join('\n'))}`;
+    const listo = f && lista.length;
+    $('p-enviar').setAttribute('aria-disabled', listo ? 'false' : 'true');
+    $('p-aclara').textContent = listo ? 'Te confirmamos cantidades y total por WhatsApp.' : (lista.length ? 'Elige la fecha para activar el botón.' : 'Elige al menos un corte.');
+  }
+  $('apetito').addEventListener('click', (ev) => { const b = ev.target.closest('button'); if (b) { gramos = +b.dataset.v; pintarParr(); } });
+  const alterna = (set) => (ev) => { const b = ev.target.closest('button'); if (!b) return; set.has(b.dataset.v) ? set.delete(b.dataset.v) : set.add(b.dataset.v); pintarParr(); };
+  $('cortes').addEventListener('click', alterna(cortes));
+  $('guarn').addEventListener('click', alterna(guarn));
+  $('p-menos').addEventListener('click', () => { if (personas > 5) { personas -= 5; pintarParr(); } });
+  $('p-mas').addEventListener('click', () => { if (personas < 200) { personas += 5; pintarParr(); } });
+  $('p-fecha').addEventListener('input', pintarParr);
+  pintarParr();
 </script>
 </body>
 </html>
